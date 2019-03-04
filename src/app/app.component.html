@@ -1,4 +1,4 @@
-<app-seachbar #Movies></app-seachbar>
-<app-movie [movie]="movie"></app-movie>
-<app-movies-list [Movies]="Movies"></app-movies-list>
+<app-seachbar (MoviesList)='Movies($event)'></app-seachbar>
+<app-movie *ngIf="Show" [movie]="movie"></app-movie>
+<app-movies-list></app-movies-list>
 

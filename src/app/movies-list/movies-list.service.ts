@@ -1,35 +1,46 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from '../movie/movie.model';
 
 @Injectable()
 
 export class MoviesListService {
   constructor(private http: HttpClient) {}
 
-  private data;
+  private MovieList: any = [];
+  private SingleMovie: any;
+  private _ShowList: boolean;
+  private _ShowMovie: boolean;
 
-  fetchData(search) {
-    return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=927e23680c7313f80147b81ecf4d7f03&query=${search}`)
-    .subscribe((res: any[]) => [res.results, console.log(res.results)]);
+  getMoviesList () {
+    return this.MovieList;
   }
 
-  selectMovie(id) {
-    return this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=927e23680c7313f80147b81ecf4d7f03`)
-    .subscribe((res: any[]) => [res.results, console.log(res.results)]);
+  setMoviesList(MovieList) {
+    this.MovieList = MovieList;
   }
 
-  getData() {
-    return this.data;
+  getMovie () {
+    return this.SingleMovie;
   }
 
-  setData(data) {
-    this.data = data;
+  setMovie(SingleMovie) {
+    this.SingleMovie = SingleMovie;
   }
 
-  @Output() Movies: EventEmitter<Movie> = new EventEmitter();
-
-  MoviesList(title) {
-    this.Movies.emit(this.fetchData(title));
+  setShowMovieList(_ShowList) {
+    this._ShowList = _ShowList;
   }
+
+  getShowMovieList() {
+    return this._ShowList;
+  }
+
+  setShowMovie(_ShowMovie) {
+    this._ShowMovie = _ShowMovie;
+  }
+
+  getShowMovie() {
+    return this._ShowMovie;
+  }
+
 }

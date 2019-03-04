@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from './movie.model';
+import { MoviesListService } from '../movies-list/movies-list.service';
 
 @Component({
   selector: 'app-movie',
@@ -8,12 +9,13 @@ import { Movie } from './movie.model';
 export class MovieComponent implements OnInit {
 
   @Input('movie') movie: Movie;
-  @Input('MovieSelected') movie: Movie;
 
-  constructor() {
+  constructor( private svc: MoviesListService ) {
   }
 
   ngOnInit() {
   }
 
+  ngDoChecked() {
+  }
 }

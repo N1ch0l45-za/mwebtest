@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, AfterContentChecked } from '@angular/core';
 import { Movie } from './movie/movie.model';
+import { MoviesListService } from './movies-list/movies-list.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements AfterContentChecked {
   movie: Movie;
+  Show = false;
 
-  constructor() {
+  constructor(private svc: MoviesListService) {
     this.movie = new Movie();
-    this.movie.id = 567701;
-    this.movie.title = 'Jurassic World';
-    this.movie.overview = 'Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.';
-    this.movie.release_date = '2015-06-06';
-    this.movie.vote_average = 6.6;
-    this.movie.poster_path = '/jjBgi2r5cRt36xF6iNUEhzscEcb.jpg';
+  }
+
+  ngAfterContentChecked() {
+    this.movie = this.svc.getMovie();
+    this.Show = this.svc.getShowMovie();
   }
 }

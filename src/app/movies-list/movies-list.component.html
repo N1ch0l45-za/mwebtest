@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <ul class="lsit-group col-md-12">
+      <li class="list-group-item d-flex justify-content-between align-items-center">Results</li>
+      <app-movies-item *ngFor="let movie of movies" (click)='onSelected(movie)' [movie]="movie"></app-movies-item>
+    </ul>
+  </div>
+</div>

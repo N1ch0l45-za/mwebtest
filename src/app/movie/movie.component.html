@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+        <img src="https://image.tmdb.org/t/p/w1280/{{movie.poster_path}}" class="img-fluid" alt="{{ movie.title }} Poster"/>
+    </div>
+    <div class="col-md-6">
+        <h1>{{ movie.title }}</h1>
+        <h3>Summary</h3>
+        <p>{{ movie.overview}}</p>
+        <h3>Release Date</h3>
+        <h4>{{ movie.release_date }}</h4>
+        <h3>Rating</h3>
+        <h4>{{ movie.vote_average }}</h4>
+    </div>
+</div>

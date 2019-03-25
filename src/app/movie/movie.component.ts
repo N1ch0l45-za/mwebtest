@@ -18,4 +18,9 @@ export class MovieComponent implements OnInit {
 
   ngDoChecked() {
   }
+
+  backToSearch() {
+    this.svc.setShowMovie(false);
+    this.svc.setShowMovieList(true);
+  }
 }

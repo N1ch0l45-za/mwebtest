@@ -29,8 +29,8 @@ export class SeachbarComponent {
     .subscribe(
       data => {
         const myArray = [];
-        for (const key in data.results) {
-          myArray.push(data.results[key]);
+        for (const key in data['results']) {
+          myArray.push(data['results'][key]);
         }
         this.Movies = myArray;
         this.svc.setMoviesList(this.Movies);
